@@ -1,6 +1,6 @@
-### This is an infrastructure repo.
+## This is an infrastructure repo.
 
-## Create redit-app
+### Create reddit-app
 
 ```bash
 gcloud compute instances  create \
@@ -12,6 +12,5 @@ gcloud compute instances  create \
   --restart-on-failure \
   --zone=europe-west1-b \
   --metadata-from-file=startup-script=startup.sh \
-  redit-app
+  reddit-app
 ```
-
