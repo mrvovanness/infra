@@ -9,7 +9,7 @@
       "type": "googlecompute",
       "image_description": "Base image for reddit app",
       "project_id": "{{user `project_id`}}",
-      "image_name": "reddit-base-{{timestamp}}",
+      "image_name": "reddit-immutable-{{timestamp}}",
       "source_image": "{{user `source_image`}}",
       "zone": "europe-west1-b",
       "ssh_username": "appuser",
@@ -31,6 +31,15 @@
       "type": "shell",
       "script": "scripts/install_mongodb.sh",
       "execute_command": "sudo {{.Path}}"
+    },
+    {
+      "type": "file",
+      "source": "files/reddit.service",
+      "destination": "/tmp/reddit.service"
+    },
+    {
+      "type": "shell",
+      "script": "scripts/install_app.sh"
     }
   ]
 }
