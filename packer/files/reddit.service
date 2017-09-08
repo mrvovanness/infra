@@ -1,0 +1,15 @@
+[Unit]
+Description=Reddit App
+After=network.target
+
+[Service]
+User=appuser
+Group=appuser
+Type=simple
+WorkingDirectory=/home/appuser/reddit
+ExecStart=/home/appuser/.rvm/gems/ruby-2.4.1/wrappers/puma
+Restart=always
+TimeoutSec=15
+
+[Install]
+WantedBy=multi-user.target
