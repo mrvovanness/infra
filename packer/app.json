@@ -1,0 +1,36 @@
+{
+  "variables": {
+    "project_id": null,
+    "source_image": null,
+    "machine_type": "f1-micro",
+    "zone": "europe-west1-b",
+    "image_family": "reddit-app-base",
+    "source_image_family": "ubuntu-1604-lts",
+    "disk_size": "10",
+    "disk_type": "pd-standard",
+    "network": "default",
+    "image_decription": "Ubuntu 16.04 with Ruby 2.4.1"
+  },
+  "builders": [
+    {
+      "type": "googlecompute",
+      "image_description": "{{user `image_description`}}",
+      "project_id": "{{user `project_id`}}",
+      "image_name": "reddit-app-base-{{timestamp}}",
+      "image_family": "{{user `image_family`}}",
+      "source_image_family": "{{user `source_image_family`}}",
+      "zone": "{{user `zone`}}",
+      "machine_type": "{{user `machine_type`}}",
+      "disk_size": "{{user `disk_size`}}",
+      "disk_type": "{{user `disk_type`}}",
+      "network": "{{user `network`}}",
+      "ssh_username": "appuser"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "scripts/install_ruby.sh"
+    }
+  ]
+}
